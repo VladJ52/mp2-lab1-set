@@ -292,3 +292,12 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
 
   EXPECT_NE(bf1, bf2);
 }
+
+TEST(TBitField, large_bitfields_can_everything1)
+{
+	const int size=1000000000;
+	TBitField bf1(size), bf2(size);
+	bf2.SetBit(1);
+	bf1 = ~bf2;
+	EXPECT_EQ(bf1, ~bf2);
+}
